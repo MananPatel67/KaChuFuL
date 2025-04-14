@@ -54,7 +54,7 @@ class Game:
 
     def initalize_round(self, round):
         assert round * self.n_players <= 52, "Wrong"
-        self.players = [Player(self.player_names[i%self.n_players]) for i in range(round-1,round+self.n_players-1)]
+        self.players = self.players[round-1:] + self.players[:round-1]
         self.round = round
         deck = Deck()
         deck.shuffle()
